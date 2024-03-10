@@ -19,10 +19,13 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue';
+import { toPascalCase, toCamelCase, toKebabCase } from '@/utils';
 import MyIcon from '@/components/icon';
 
+const name = 'myButton';
+
 defineOptions({
-  name: 'MyButton',
+  name: toPascalCase(name),
 });
 
 type Type = 'default' | 'primary' | 'success' | 'warning' | 'danger' | 'info';
@@ -43,11 +46,19 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 const tag = computed(() => 'button');
-const classes = computed(() => ['my-button',
-  { primary: props.type === 'primary' },
-  { loading: props.loading },
-  { disabled: props.disabled },
-]);
+const classes = computed(() => {
+  const { size } = props;
+
+  console.log({ name });
+
+  return ['my-button',
+    { primary: props.type === 'primary' },
+    { loading: props.loading },
+    { disabled: props.disabled },
+    { 'my-button-large': size === 'large' },
+    { 'my-button-small': size === 'small' },
+  ];
+});
 const styles = computed(() => ({}));
 
 const emit = defineEmits(['click']);

@@ -1,7 +1,6 @@
 import type { App } from 'vue';
 import * as components from './components';
 import { version } from '../package.json';
-// import './styles';
 
 export function install(app: App): App {
   Object.values(components).forEach(component => {

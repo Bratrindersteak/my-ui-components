@@ -1,10 +1,10 @@
+@use './vars';
+
 .my-button {
-  //line-height: 32px;
-  font-size: 0;
-  margin: 0px;
-  padding: 0px 12px;
-  border-width: 1px;
-  border-style: solid;
+  line-height: 1;
+  font-size: var(--my-button-font-size);
+  padding: 8px 15px;
+  border: 1px solid;
   border-radius: 4px;
   cursor: pointer;
 
@@ -32,11 +32,6 @@
     }
   }
 
-  .my-icon {
-    width: 14px;
-    height: 14px;
-  }
-
   &.loading {
     position: relative;
 
@@ -61,11 +56,15 @@
   }
 
   .my-icon {
-
+    width: 1em;
+    height: 1em;
+    vertical-align: -2px;
   }
 
   .text {
-    font-size: 14px;
+    &:not(:first-child) {
+      margin-left: 6px;
+    }
   }
 }
 

@@ -1,15 +1,31 @@
 <script setup lang="ts">
+import { ref } from 'vue';
+
+import './styles/index.scss';
 import HelloWorld from './components/HelloWorld.vue'
 import TheWelcome from './components/TheWelcome.vue'
 import Button from './components/button/button.vue'
+
+const buttonSize = ref('default');
+
+function onSizeChange(event: Event) {
+  const { value } = event.target;
+
+  buttonSize.value = value;
+}
 </script>
 
 <template>
   <header>
     <div>
       <button>native button</button>
+      <select name="" id="" @change="onSizeChange">
+        <option value="large">Large</option>
+        <option value="default" selected>Default</option>
+        <option value="small">Small</option>
+      </select>
       <Button>my button</Button>
-      <Button loading>我的按钮1</Button>
+      <Button loading :size="buttonSize">Loading</Button>
       <Button icon="plus">我的按钮2</Button>
       <Button type="primary" icon="loading">我的按钮3</Button>
       <Button disabled>my button disabled 1</Button>
