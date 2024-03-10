@@ -3,10 +3,32 @@
 .my-button {
   line-height: 1;
   font-size: var(--my-button-font-size);
-  padding: 8px 15px;
+  padding: var(--my-button-padding);
   border: 1px solid;
   border-radius: 4px;
   cursor: pointer;
+
+  &.large {
+    font-size: var(--my-button-font-size-large);
+    padding: var(--my-button-padding-large);
+
+    .text {
+      &:not(:first-child) {
+        margin-left: var(--my-button-text-margin-left-large);
+      }
+    }
+  }
+
+  &.small {
+    font-size: var(--my-button-font-size-small);
+    padding: var(--my-button-padding-small );
+
+    .text {
+      &:not(:first-child) {
+        margin-left: var(--my-button-text-margin-left-small);
+      }
+    }
+  }
 
   &:before {
     position: absolute;
@@ -63,7 +85,7 @@
 
   .text {
     &:not(:first-child) {
-      margin-left: 6px;
+      margin-left: var(--my-button-text-margin-left);
     }
   }
 }

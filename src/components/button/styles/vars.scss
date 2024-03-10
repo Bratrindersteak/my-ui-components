@@ -2,5 +2,18 @@
   --my-button-font-size-large: 16px;
   --my-button-font-size: 14px;
   --my-button-font-size-small: 12px;
+  --my-button-padding-large: 11px 19px;
+  --my-button-padding: 8px 15px;
+  --my-button-padding-small: 5px 11px;
+  --my-button-text-margin-left-large: 8px;
+  --my-button-text-margin-left: 6px;
+  --my-button-text-margin-left-small: 4px;
+}
 
+.my-button-large {
+  --my-button-font-size: 16px;
+}
+
+.my-button-small {
+  --my-button-font-size: 12px;
 }

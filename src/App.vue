@@ -26,9 +26,9 @@ function onSizeChange(event: Event) {
       </select>
       <Button>my button</Button>
       <Button loading :size="buttonSize">Loading</Button>
-      <Button icon="plus">我的按钮2</Button>
-      <Button type="primary" icon="loading">我的按钮3</Button>
-      <Button disabled>my button disabled 1</Button>
+      <Button icon="plus" size="default">我的按钮2</Button>
+      <Button type="primary" icon="loading" size="large">我的按钮3</Button>
+      <Button disabled size="small">my button disabled 1</Button>
       <Button type="primary" disabled>my button disabled 2</Button>
     </div>
     <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
