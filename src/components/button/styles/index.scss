@@ -1,34 +1,17 @@
 @use './vars';
 
 .my-button {
+  position: var(--my-button-position);
   line-height: 1;
   font-size: var(--my-button-font-size);
   padding: var(--my-button-padding);
-  border: 1px solid;
+  transition: 0.2s;
+  color: var(--my-button-color);
+  background-color: var(--my-button-background-color);
+  border: 1px solid var(--my-button-border-color);
   border-radius: 4px;
-  cursor: pointer;
-
-  &.large {
-    font-size: var(--my-button-font-size-large);
-    padding: var(--my-button-padding-large);
-
-    .text {
-      &:not(:first-child) {
-        margin-left: var(--my-button-text-margin-left-large);
-      }
-    }
-  }
-
-  &.small {
-    font-size: var(--my-button-font-size-small);
-    padding: var(--my-button-padding-small );
-
-    .text {
-      &:not(:first-child) {
-        margin-left: var(--my-button-text-margin-left-small);
-      }
-    }
-  }
+  cursor: var(--my-button-cursor);
+  user-select: none; // 是否允许用户选中文本等内容.
 
   &:before {
     position: absolute;
@@ -37,44 +20,6 @@
     width: calc(100% + 2px);
     height: calc(100% + 2px);
     border-radius: 4px;
-  }
-
-  &.primary {
-    background-color: #409eff;
-    border-color: #409eff;
-    color: #ffffff;
-
-    &:hover:not(.loading, .disabled) {
-      position: relative;
-
-      &:before {
-        content: '';
-        background-color: rgba(255, 255, 255, 0.3);
-      }
-    }
-  }
-
-  &.loading {
-    position: relative;
-
-    &:before {
-      content: '';
-      background-color: rgba(255, 255, 255, 0.3);
-    }
-
-    .my-icon {
-      animation: rotating 2s linear infinite;
-    }
-  }
-
-  &.disabled {
-    position: relative;
-
-    &:before {
-      content: '';
-      cursor: not-allowed;
-      background-color: rgba(255, 255, 255, 0.5);
-    }
   }
 
   .my-icon {
@@ -87,6 +32,40 @@
     &:not(:first-child) {
       margin-left: var(--my-button-text-margin-left);
     }
+  }
+}
+
+.my-button-default:hover:not(.my-button-loading, .my-button-disabled) {
+  color: var(--my-color-primary);
+  border-color: var(--my-color-primary);
+}
+
+.my-button-primary:hover:not(.my-button-loading, .my-button-disabled) {
+  &:before {
+    content: '';
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+}
+
+.my-button-block {
+  width: 100%;
+}
+
+.my-button-loading {
+  &:before {
+    content: '';
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+
+  .my-icon {
+    animation: rotating 2s linear infinite;
+  }
+}
+
+.my-button-disabled {
+  &:before {
+    content: '';
+    background-color: rgba(255, 255, 255, 0.5);
   }
 }
 

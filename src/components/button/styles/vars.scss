@@ -1,19 +1,41 @@
+@use '@/styles/vars';
+
 .my-button {
-  --my-button-font-size-large: 16px;
+  --my-button-position: static;
   --my-button-font-size: 14px;
-  --my-button-font-size-small: 12px;
-  --my-button-padding-large: 11px 19px;
   --my-button-padding: 8px 15px;
-  --my-button-padding-small: 5px 11px;
-  --my-button-text-margin-left-large: 8px;
   --my-button-text-margin-left: 6px;
-  --my-button-text-margin-left-small: 4px;
+  --my-button-background-color: transparent;
+  --my-button-border-color: #d9d9d9;
+  --my-button-color: #606266;
+  --my-button-cursor: pointer;
 }
 
 .my-button-large {
   --my-button-font-size: 16px;
+  --my-button-padding: 11px 19px;
+  --my-button-text-margin-left: 8px;
 }
 
 .my-button-small {
   --my-button-font-size: 12px;
+  --my-button-padding: 5px 11px;
+  --my-button-text-margin-left: 4px;
+}
+
+.my-button-primary {
+  --my-button-position: relative;
+  --my-button-background-color: #409eff;
+  --my-button-border-color: #409eff;
+  --my-button-color: #ffffff;
+}
+
+.my-button-loading {
+  --my-button-position: relative;
+  --my-button-cursor: default;
+}
+
+.my-button-disabled {
+  --my-button-position: relative;
+  --my-button-cursor: not-allowed;
 }

@@ -5,6 +5,7 @@ import './styles/index.scss';
 import HelloWorld from './components/HelloWorld.vue'
 import TheWelcome from './components/TheWelcome.vue'
 import Button from './components/button/button.vue'
+import Icon from './components/icon/icon.vue'
 
 const buttonSize = ref('default');
 
@@ -27,7 +28,15 @@ function onSizeChange(event: Event) {
       <Button>my button</Button>
       <Button loading :size="buttonSize">Loading</Button>
       <Button icon="plus" size="default">我的按钮2</Button>
-      <Button type="primary" icon="loading" size="large">我的按钮3</Button>
+      <Button type="primary" icon="loading" size="large">
+        <icon type="loading" />
+        我的按钮3
+
+        <template #icon>
+          <icon type="plus" />
+        </template>
+
+      </Button>
       <Button disabled size="small">my button disabled 1</Button>
       <Button type="primary" disabled>my button disabled 2</Button>
     </div>
