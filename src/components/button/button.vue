@@ -3,15 +3,17 @@
     :class="classes" :style="styles"
     @click="handleClick"
   >
-    <template v-if="$slots.icon">
+    <template v-if="$slots.loading">
+      <slot name="loading"></slot>
+    </template>
+    <template v-else-if="loading">
+      <my-icon type="loading" />
+    </template>
+    <template v-else-if="$slots.icon">
       <slot name="icon"></slot>
     </template>
     <template v-else-if="icon">
       <my-icon :type="icon" />
-    </template>
-    <template v-else-if="loading">
-      <slot v-if="$slots.loading" name="loading"></slot>
-      <my-icon v-else type="loading" />
     </template>
     <span v-if="$slots.default" class="text">
       <slot name="default"/>
@@ -21,7 +23,7 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue';
-import { toPascalCase, toCamelCase, toKebabCase } from '@/utils';
+import { toPascalCase, toKebabCase } from '@/utils';
 import MyIcon from '@/components/icon';
 
 const name = 'myButton';
