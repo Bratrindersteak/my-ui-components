@@ -1,5 +1,5 @@
 <template>
-  <component :is="tag" ref="button"
+  <component :is="tag" ref="button" :id="id"
     :class="classes" :style="styles"
     @click="handleClick"
   >
@@ -23,10 +23,12 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue';
-import { toPascalCase, toKebabCase } from '@/utils';
+import { genId, toPascalCase, toKebabCase } from '@/utils';
 import MyIcon from '@/components/icon';
 
 const name = 'myButton';
+
+const id = genId(name);
 
 defineOptions({
   name: toPascalCase(name),
@@ -99,6 +101,7 @@ function blur() {
 }
 
 defineExpose({
+  ref: button,
   focus,
   blur,
 });

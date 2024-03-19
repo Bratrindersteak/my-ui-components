@@ -13,9 +13,10 @@
 import { defineComponent } from 'vue';
 import Plus from '@/icons/plus.vue';
 import Loading from '@/icons/loading.vue';
+import Sun from '@/icons/sun.vue';
 
 export default defineComponent({
-  components: { Plus, Loading },
+  components: { Plus, Loading, Sun },
   name: 'MyIcon',
   props: {
     type: {
@@ -31,32 +32,10 @@ export default defineComponent({
 });
 </script>
 
-<!--<script setup lang="ts">-->
-<!--import { ref, computed } from 'vue';-->
-<!--import Loading from '@/icons/loading.vue';-->
-
-<!--defineOptions({-->
-<!--  name: 'MyIcon',-->
-<!--});-->
-
-<!--type Type = 'loading';-->
-<!--interface Props {-->
-<!--  type?: string-->
-<!--  color?: string-->
-<!--  size?: number | string-->
-<!--}-->
-
-<!--const props = withDefaults(defineProps<Props>(), {-->
-<!--  type: '',-->
-<!--  color: 'inherit',-->
-<!--});-->
-
-<!--const icon = computed(() => `my-${props.type}`);-->
-<!--const classes = computed(() => ['my-icon']);-->
-<!--</script>-->
-
-<style scoped lang="scss">
+<style lang="scss">
 .my-icon {
   display: inline-block;
+  width: 1em;
+  height: 1em;
 }
 </style>

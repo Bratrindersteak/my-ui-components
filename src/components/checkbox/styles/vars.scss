@@ -1,0 +1,7 @@
+@use '@/styles/vars';
+
+.my-checkbox {
+  &:hover {
+    --my-checkbox-border-color: var(--my-color-primary);
+  }
+}

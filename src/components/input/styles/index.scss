@@ -1,0 +1,14 @@
+@use './vars';
+
+.my-input {
+  height: 32px;
+  padding: 0;
+  border: none;
+  &:focus {
+    outline: none;
+  }
+}
+
+.my-input-text {
+
+}

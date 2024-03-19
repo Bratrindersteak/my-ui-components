@@ -1,7 +1,6 @@
 @use '@/styles/vars';
 
 .my-button {
-  --my-button-position: static;
   --my-button-height: 32px;
   --my-button-font-size: 14px;
   --my-button-padding: 0px 15px;
@@ -27,18 +26,15 @@
 }
 
 .my-button-primary {
-  --my-button-position: relative;
   --my-button-background-color: #409eff;
   --my-button-border-color: #409eff;
   --my-button-color: #ffffff;
 }
 
 .my-button-loading {
-  --my-button-position: relative;
   --my-button-cursor: default;
 }
 
 .my-button-disabled {
-  --my-button-position: relative;
   --my-button-cursor: not-allowed;
 }

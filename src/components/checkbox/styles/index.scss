@@ -1,0 +1,13 @@
+@use './vars';
+
+.my-checkbox {
+  margin: 0;
+  width: 14px;
+  height: 14px;
+
+  border: none;
+
+  &:hover {
+    border: 1px solid var(--my-checkbox-border-color);
+  }
+}

@@ -1,12 +1,11 @@
 @use './vars';
 
 .my-button {
-  position: var(--my-button-position);
   height: var(--my-button-height);
   line-height: 1;
   font-size: var(--my-button-font-size);
   padding: var(--my-button-padding);
-  transition: 0.2s;
+  transition: all 2s;
   color: var(--my-button-color);
   background-color: var(--my-button-background-color);
   border: 1px solid var(--my-button-border-color);
@@ -14,19 +13,7 @@
   cursor: var(--my-button-cursor);
   user-select: none; // 是否允许用户选中文本等内容.
 
-  &:before {
-    content: '';
-    top: -1px;
-    left: -1px;
-    width: calc(100% + 2px);
-    height: calc(100% + 2px);
-    transition: 0.2s;
-    border-radius: 4px;
-  }
-
   .my-icon {
-    width: 1em;
-    height: 1em;
     vertical-align: bottom;
   }
 
@@ -61,17 +48,12 @@
 }
 
 .my-button-primary:hover:not(.my-button-loading, .my-button-disabled) {
-  &:before {
-    position: absolute;
-    background-color: rgba(255, 255, 255, 0.3);
-  }
+  border-color: #409eff7f;
+  background-color: #409eff7f;
 }
 
 .my-button-loading {
-  &:before {
-    position: absolute;
-    background-color: rgba(255, 255, 255, 0.3);
-  }
+
 
   .my-icon {
     animation: rotating 1s linear infinite;
@@ -79,10 +61,7 @@
 }
 
 .my-button-disabled {
-  &:before {
-    position: absolute;
-    background-color: rgba(255, 255, 255, 0.5);
-  }
+
 }
 
 @keyframes rotating {
