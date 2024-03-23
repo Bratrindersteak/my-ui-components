@@ -1,13 +1,52 @@
 @use './vars';
 
 .my-checkbox {
-  margin: 0;
-  width: 14px;
-  height: 14px;
+  display: inline-block;
+  line-height: 1;
+  font-size: var(--my-checkbox-font-size);
+  cursor: var(--my-checkbox-cursor);
+}
 
-  border: none;
+.my-checkbox-checked {
+  .my-checkbox-current {
+    position: relative;
+    background-color: var(--my-checkbox-background-color);
+    border-color: var(--my-checkbox-border-color);
 
-  &:hover {
-    border: 1px solid var(--my-checkbox-border-color);
+    &:before {
+      content: '';
+      position: absolute;
+      width: 42%;
+      height: 75%;
+      top: 6%;
+      left: 29%;
+      background-color: var(--my-checkbox-check-background-color);
+      border-right: 2px solid var(--my-checkbox-check-border-color);
+      border-bottom: 2px solid var(--my-checkbox-check-border-color);
+      box-sizing: border-box;
+      transform: rotate(45deg);
+    }
   }
+}
+
+.my-checkbox-original {
+  width: 0;
+  height: 0;
+  margin: 0;
+}
+
+.my-checkbox-current {
+  display: inline-block;
+  width: var(--my-checkbox-width);
+  height: var(--my-checkbox-height);
+  vertical-align: bottom;
+  transition: all .2s;
+  background-color: var(--my-checkbox-background-color);
+  border: 1px solid var(--my-checkbox-border-color);
+  border-radius: var(--my-checkbox-border-radius);
+  box-sizing: border-box;
+}
+
+.my-checkbox-text {
+  margin: 0 8px;
 }

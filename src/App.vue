@@ -28,10 +28,10 @@ function hangleCheckboxChange(event: Event) {
     <option value="small">Small</option>
   </select>
   <Input></Input>
-  <Checkbox value="sun" @change="hangleCheckboxChange">checkbox</Checkbox>
+  <Checkbox value="sun" size="small" @change="hangleCheckboxChange">checkbox</Checkbox>
   <Checkbox>checkbox 1</Checkbox>
-  <Checkbox>checkbox 2</Checkbox>
-  <Checkbox disabled>checkbox 3</Checkbox>
+  <Checkbox checked size="large">checkbox 2</Checkbox>
+  <Checkbox disabled checked size="large">checkbox 3</Checkbox>
   <Button>my button</Button>
   <Button loading :size="buttonSize">Loading</Button>
   <Button icon="plus" size="default" loading>

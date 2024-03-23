@@ -1,10 +1,12 @@
 <template>
-  <label :for="id" :class="classes" :style="styles">
-    <input type="checkbox" ref="checkbox" :id="id" :class="originalClass"
+  <label ref="label" :for="id" :class="classes" :style="styles">
+    <input type="checkbox" ref="checkbox" :id="id" :class="classOriginal"
            :checked="checked" :disabled="disabled"
-           @change="handleChange"/>
-    <span :class="realClass"></span>
-    <slot name="default"/>
+           @click="handleClick" @change="handleChange"/>
+    <span :class="classCurrent"></span>
+    <span :class="`${toKebabCase(name)}-text`" v-if="$slots.default">
+      <slot name="default"/>
+    </span>
   </label>
 </template>
 
@@ -35,29 +37,41 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 const classes = computed(() => {
-  const { disabled, size } = props;
+  const { checked, disabled, size } = props;
   return [
     toKebabCase(name),
+    checked ? `${toKebabCase(name)}-checked` : '',
     disabled ? `${toKebabCase(name)}-disabled` : '',
     size !== 'default' ? `${toKebabCase(name)}-${size}` : '',
   ];
 });
-const originalClass = `${toKebabCase(name)}-original`;
-const realClass = `${toKebabCase(name)}-real`;
+const classOriginal = `${toKebabCase(name)}-original`;
+const classCurrent = `${toKebabCase(name)}-current`;
 const styles = computed(() => ({}));
 
 const emit = defineEmits(['change']);
 
+interface Slots {
+  default(): any
+}
+
+const slots = defineSlots<Slots>();
+
 function handleChange(event: Event) {
-  if (props.disabled) {
-    event.preventDefault();
-    return;
-  }
+  // if (props.disabled) {
+  //   event.preventDefault();
+  //   return;
+  // }
 
   emit('change', event);
 }
 
 const checkbox = ref<HTMLInputElement>();
+const label = ref<HTMLLabelElement>();
+
+function handleClick() {
+  label.value?.classList.toggle(`${toKebabCase(name)}-checked`);
+}
 </script>
 
 <style lang="scss" src="./styles/index.scss"></style>
