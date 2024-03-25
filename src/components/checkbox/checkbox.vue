@@ -1,7 +1,7 @@
 <template>
   <label ref="label" :for="id" :class="classes" :style="styles">
     <input type="checkbox" ref="checkbox" :id="id" :class="classOriginal"
-           :checked="checked" :disabled="disabled"
+           v-model="model" :disabled="disabled"
            @click="handleClick" @change="handleChange"/>
     <span :class="classCurrent"></span>
     <span :class="`${toKebabCase(name)}-text`" v-if="$slots.default">
@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue';
+import { computed, ref, watch } from 'vue';
 import { genId, toKebabCase, toPascalCase } from '@/utils';
 
 const name = 'myCheckbox';
@@ -21,6 +21,8 @@ const id = genId(name);
 defineOptions({
   name: toPascalCase(name),
 });
+
+const model = defineModel('checked', { type: Boolean });
 
 type Size = 'default' | 'large' | 'small';
 
@@ -35,6 +37,10 @@ const props = withDefaults(defineProps<Props>(), {
   checked: false,
   size: 'default',
 });
+
+watch(() => props.checked, (checked) => {
+  model.value = checked;
+}, { immediate: true, once: true });
 
 const classes = computed(() => {
   const { checked, disabled, size } = props;
@@ -58,11 +64,6 @@ interface Slots {
 const slots = defineSlots<Slots>();
 
 function handleChange(event: Event) {
-  // if (props.disabled) {
-  //   event.preventDefault();
-  //   return;
-  // }
-
   emit('change', event);
 }
 

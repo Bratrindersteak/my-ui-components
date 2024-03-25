@@ -1,14 +1,52 @@
 @use './vars';
 
 .my-input {
-  height: 32px;
+  display: inline-block;
+  height: var(--my-input-height);
+  line-height: 1;
+  font-size: var(--my-input-font-size);
+  transition: all 0.2s;
+  color: var(--my-input-color);
+  background-color: transparent;
+  border: 1px solid var(--my-input-border-color);
+  border-radius: var(--my-input-border-radius);
+  box-sizing: border-box;
+}
+
+.my-input-text {
+
+}
+
+.my-input-main {
+  height: 100%;
+  padding: 0 11px;
+}
+
+.my-input-prefix {
+  display: inline-block;
+  margin-right: 8px;
+
+  & .my-icon {
+    vertical-align: bottom;
+  }
+}
+
+.my-input-origin {
+  height: 100%;
   padding: 0;
+  background-color: inherit;
   border: none;
+
   &:focus {
     outline: none;
   }
 }
 
-.my-input-text {
+.my-input-suffix {
+  display: inline-block;
+  margin-left: 8px;
 
+  & .my-icon {
+    vertical-align: bottom;
+  }
 }

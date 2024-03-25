@@ -1,7 +1,25 @@
 @use '@/styles/vars';
 
 .my-input {
+  --my-input-height: var(--my-height);
+  --my-input-font-size: var(--my-font-size);
+  --my-input-color: var(--my-color-text);
+  --my-input-border-color: var(--my-border-color);
+  --my-input-border-radius: var(--my-border-radius);
 
+  &:hover:not(.my-input-disabled) {
+    --my-input-border-color: var(--my-border-color-hover);
+  }
+}
+
+.my-input-large {
+  --my-input-height: var(--my-height-large);
+  --my-input-font-size: var(--my-font-size-large);
+}
+
+.my-input-small {
+  --my-input-height: var(--my-height-small);
+  --my-input-font-size: var(--my-font-size-small);
 }
 
 .my-input-text {

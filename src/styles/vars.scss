@@ -11,5 +11,12 @@
 :root {
   --my-color-white: #ffffff;
   --my-color-black: #000000;
+}
+
+:root {
   --my-color-primary: #409eff;
+  --my-color-text: rgb(0, 0, 0, 0.8);
+  --my-color-text-disabled: rgb(0, 0, 0, 0.3);
+  --my-border-color: #d9d9d9;
+  --my-border-color-hover: var(--my-color-primary);
 }
