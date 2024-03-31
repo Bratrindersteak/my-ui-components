@@ -11,6 +11,8 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import CloseCircle from '@/icons/close-circle.vue';
+import CloseCircleFilled from '@/icons/close-circle-filled.vue';
 import Eye from '@/icons/eye.vue';
 import Hide from '@/icons/hide.vue';
 import Plus from '@/icons/plus.vue';
@@ -20,7 +22,7 @@ import Sun from '@/icons/sun.vue';
 import User from '@/icons/user.vue';
 
 export default defineComponent({
-  components: { Eye, Hide, Plus, Loading, Search, Sun, User },
+  components: { CloseCircle, CloseCircleFilled, Eye, Hide, Plus, Loading, Search, Sun, User },
   name: 'MyIcon',
   props: {
     type: {

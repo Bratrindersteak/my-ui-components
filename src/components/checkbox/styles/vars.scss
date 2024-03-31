@@ -1,11 +1,11 @@
 @use '@/styles/vars';
 
 .my-checkbox {
-  --my-checkbox-width: 14px;
-  --my-checkbox-height: 14px;
+  --my-checkbox-width: var(--my-font-size);
+  --my-checkbox-height: var(--my-font-size);
   --my-checkbox-font-size: var(--my-font-size);
-  --my-checkbox-color: var(--my-color-text);
-  --my-checkbox-border-color: #d9d9d9;
+  --my-checkbox-color: var(--my-color);
+  --my-checkbox-border-color: var(--my-border-color);
   --my-checkbox-border-radius: 2px;
   --my-checkbox-cursor: pointer;
 
@@ -15,14 +15,14 @@
 }
 
 .my-checkbox-large {
-  --my-checkbox-width: 16px;
-  --my-checkbox-height: 16px;
+  --my-checkbox-width: var(--my-font-size-large);
+  --my-checkbox-height: var(--my-font-size-large);
   --my-checkbox-font-size: var(--my-font-size-large);
 }
 
 .my-checkbox-small {
-  --my-checkbox-width: 12px;
-  --my-checkbox-height: 12px;
+  --my-checkbox-width: var(--my-font-size-small);
+  --my-checkbox-height: var(--my-font-size-small);
   --my-checkbox-font-size: var(--my-font-size-small);
 }
 
@@ -38,9 +38,9 @@
 }
 
 .my-checkbox-disabled {
-  --my-checkbox-color: var(--my-color-text-disabled);
-  --my-checkbox-background-color: rgb(0, 0, 0, 0.04);
-  --my-checkbox-border-color: #d9d9d9;
+  --my-checkbox-color: var(--my-color-disabled);
+  --my-checkbox-background-color: var(--my-background-color-disabled);
+  --my-checkbox-border-color: var(--my-border-color-disabled);
   --my-checkbox-check-border-color: #d9d9d9;
   --my-checkbox-cursor: not-allowed;
 }

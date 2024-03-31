@@ -1,7 +1,7 @@
 @use './vars';
 
 .my-input {
-  display: inline-block;
+  display: inline-flex;
   height: var(--my-input-height);
   line-height: 1;
   font-size: var(--my-input-font-size);
@@ -11,13 +11,24 @@
   border: 1px solid var(--my-input-border-color);
   border-radius: var(--my-input-border-radius);
   box-sizing: border-box;
+  cursor: var(--my-input-cursor);
 }
 
 .my-input-text {
 
 }
 
+.my-input-prepend {
+  display: inline-flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 11px;
+  background-color: rgb(0, 0, 0, 0.02);
+  border-right: 1px solid var(--my-input-border-color);
+}
+
 .my-input-main {
+  display: inline-block;
   height: 100%;
   padding: 0 11px;
 }
@@ -34,8 +45,10 @@
 .my-input-origin {
   height: 100%;
   padding: 0;
+  color: var(--my-input-color);
   background-color: inherit;
   border: none;
+  cursor: var(--my-input-cursor);
 
   &:focus {
     outline: none;
@@ -50,3 +63,17 @@
     vertical-align: bottom;
   }
 }
+
+.my-input-visible, .my-input-clearable {
+  cursor: pointer;
+}
+
+.my-input-append {
+  display: inline-flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 11px;
+  background-color: rgb(0, 0, 0, 0.02);
+  border-left: 1px solid var(--my-input-border-color);
+}
+

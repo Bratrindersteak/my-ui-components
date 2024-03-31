@@ -1,0 +1,50 @@
+@use '@/styles/vars';
+
+.my-radio {
+  --my-radio-width: var(--my-font-size);
+  --my-radio-height: var(--my-font-size);
+  --my-radio-font-size: var(--my-font-size);
+  --my-radio-color: var(--my-color);
+  --my-radio-background-color: var(--my-color-white);
+  --my-radio-background-color-pointer: var(--my-color-white);
+  --my-radio-border-color: var(--my-border-color);
+  --my-radio-cursor: pointer;
+
+  &:hover:not(.my-radio-disabled) {
+    --my-radio-border-color: var(--my-color-primary);
+  }
+}
+
+.my-radio-large {
+  --my-radio-width: var(--my-font-size-large);
+  --my-radio-height: var(--my-font-size-large);
+  --my-radio-font-size: var(--my-font-size-large);
+}
+
+.my-radio-small {
+  --my-radio-width: var(--my-font-size-small);
+  --my-radio-height: var(--my-font-size-small);
+  --my-radio-font-size: var(--my-font-size-small);
+}
+
+.my-radio-checked {
+  --my-radio-background-color: var(--my-color-primary);
+  --my-radio-border-color: var(--my-color-primary);
+
+  &:hover:not(.my-radio-disabled) {
+    --my-radio-background-color: #79bbff;
+    --my-radio-border-color: #79bbff;
+  }
+}
+
+.my-radio-disabled {
+  --my-radio-color: var(--my-color-disabled);
+  --my-radio-background-color: var(--my-background-color-disabled);
+  --my-radio-background-color-pointer: var(--my-background-color-disabled);
+  --my-radio-border-color: var(--my-border-color-disabled);
+  --my-radio-cursor: not-allowed;
+
+  &.my-radio-checked {
+    --my-radio-background-color-pointer: var(--my-color-disabled);
+  }
+}

@@ -1,6 +1,6 @@
 <template>
   <label ref="label" :for="id" :class="classes" :style="styles">
-    <input ref="checkbox" type="checkbox" :id="id" :class="classOriginal"
+    <input ref="radio" type="radio" :id="id" :class="classOriginal"
            v-model="model" :disabled="disabled"
            @click="handleClick" @change="handleChange"/>
     <span :class="classCurrent"></span>
@@ -12,9 +12,9 @@
 
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue';
-import { genId, toKebabCase, toPascalCase } from '@/utils';
+import { genId, toKebabCase, toPascalCase } from "@/utils";
 
-const name = 'myCheckbox';
+const name = 'myRadio';
 
 const id = genId(name);
 
@@ -67,7 +67,7 @@ function handleChange(event: Event) {
   emit('change', event);
 }
 
-const checkbox = ref<HTMLInputElement>();
+const radio = ref<HTMLInputElement>();
 const label = ref<HTMLLabelElement>();
 
 function handleClick() {

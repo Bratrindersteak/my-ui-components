@@ -3,9 +3,11 @@
 .my-input {
   --my-input-height: var(--my-height);
   --my-input-font-size: var(--my-font-size);
-  --my-input-color: var(--my-color-text);
+  --my-input-color: var(--my-color);
+  --my-input-background-color: var(--my-background-color);
   --my-input-border-color: var(--my-border-color);
   --my-input-border-radius: var(--my-border-radius);
+  --my-input-cursor: text;
 
   &:hover:not(.my-input-disabled) {
     --my-input-border-color: var(--my-border-color-hover);
@@ -20,6 +22,13 @@
 .my-input-small {
   --my-input-height: var(--my-height-small);
   --my-input-font-size: var(--my-font-size-small);
+}
+
+.my-input-disabled {
+  --my-input-color: var(--my-color-disabled);
+  --my-input-background-color: var(--my-background-color-disabled);
+  --my-input-border-color: var(--my-border-color-disabled);
+  --my-input-cursor: not-allowed;
 }
 
 .my-input-text {

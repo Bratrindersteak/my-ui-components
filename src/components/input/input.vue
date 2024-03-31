@@ -1,24 +1,31 @@
 <template>
-  <div :id="id" :class="classes" :style="styles">
-    <div v-if="$slots.prepend" :class="`${toKebabCase(name)}-prepend`">
-      <slot name="prepend"></slot>
+  <div :class="classes" :style="styles">
+    <div v-if="$slots.prepend || prepend" :class="`${toKebabCase(name)}-prepend`">
+      <slot v-if="$slots.prepend" name="prepend"></slot>
+      <template v-else>{{ prepend }}</template>
     </div>
     <div :class="`${toKebabCase(name)}-main`">
       <div v-if="$slots.prefix || prefix" :class="`${toKebabCase(name)}-prefix`">
         <slot v-if="$slots.prefix" name="prefix"></slot>
         <my-icon v-else :type="prefix"></my-icon>
       </div>
-      <input ref="input" :type="type" :class="`${toKebabCase(name)}-origin`"
+      <input ref="input" :type="visible ? 'text' : type" :id="id" :class="`${toKebabCase(name)}-origin`"
              v-model="model" :disabled="disabled" :placeholder="placeholder"
       />
-      <div v-if="$slots.suffix || suffix || type === 'password'" :class="`${toKebabCase(name)}-suffix`">
+      <div v-if="$slots.suffix || suffix" :class="`${toKebabCase(name)}-suffix`">
         <slot v-if="$slots.suffix" name="suffix"></slot>
         <my-icon v-else :type="suffix"></my-icon>
-        <my-icon v-if="type === 'password'" :type="visible ? 'eye' : 'hide'" @click="handleVisibleChange"></my-icon>
+      </div>
+      <div v-if="clearable" v-show="showClearable" :class="`${toKebabCase(name)}-suffix ${toKebabCase(name)}-clearable`" @click="() => model = ''">
+        <my-icon type="close-circle"></my-icon>
+      </div>
+      <div v-if="type === 'password'" v-show="showVisible" :class="`${toKebabCase(name)}-suffix  ${toKebabCase(name)}-visible`" @click="() => visible = !visible">
+        <my-icon :type="visible ? 'eye' : 'hide'"></my-icon>
       </div>
     </div>
-    <div v-if="$slots.append" :class="`${toKebabCase(name)}-append`">
-      <slot name="append"></slot>
+    <div v-if="$slots.append || append" :class="`${toKebabCase(name)}-append`">
+      <slot v-if="$slots.append" name="append"></slot>
+      <template v-else>{{ append }}</template>
     </div>
   </div>
 </template>
@@ -38,15 +45,6 @@ defineOptions({
 
 const model = defineModel<string>();
 const visible = ref(false);
-function handleVisibleChange() {
-  if (visible.value) {
-    
-  } else {
-
-  }
-
-  visible.value = !visible.value;
-}
 
 type Type = 'text' | 'textarea' | 'password' | 'button' | 'checkbox' | 'radio' | 'file' | 'number';
 type Size = 'default' | 'large' | 'small';
@@ -60,12 +58,14 @@ interface Props {
   suffix?: any
   append?: any
   placeholder?: string
+  clearable?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
   disabled: false,
   type: 'text',
   size: 'default',
+  clearable: false,
 });
 
 const classes = computed(() => {
@@ -79,6 +79,9 @@ const classes = computed(() => {
 });
 const styles = computed(() => ({}));
 
+const showClearable = computed(() => props.clearable && model.value && !props.disabled);
+const showVisible = computed(() => props.type === 'password' && model.value && !props.disabled);
+
 interface Slots {
   prepend(): any
   prefix(): any
@@ -88,14 +91,14 @@ interface Slots {
 
 const slots = defineSlots<Slots>();
 
-const input = ref<HTMLInputElement>();
+const input = ref<HTMLInputElement | null>(null);
 
 function focus() {
-  input.value!.focus();
+  input.value?.focus();
 }
 
 function blur() {
-  input.value!.blur();
+  input.value?.blur();
 }
 
 defineExpose({

@@ -1,3 +1,4 @@
+/* 尺寸 */
 :root {
   --my-height-small: 24px;
   --my-height: 32px;
@@ -8,15 +9,22 @@
   --my-border-radius: 4px;
 }
 
+/* 基本颜色 */
 :root {
   --my-color-white: #ffffff;
   --my-color-black: #000000;
 }
 
+/* 业务颜色 */
 :root {
   --my-color-primary: #409eff;
-  --my-color-text: rgb(0, 0, 0, 0.8);
-  --my-color-text-disabled: rgb(0, 0, 0, 0.3);
+  --my-color: #606266;
+  --my-color-disabled: #a8abb2;
+  --my-color-hover: rgb(0, 0, 0, 0.3);
+  --my-background-color: transparent;
+  --my-background-color-disabled: #f5f7fa;
+  --my-background-color-hover: var(--my-color-primary);
   --my-border-color: #d9d9d9;
+  --my-border-color-disabled: #e4e7ed;
   --my-border-color-hover: var(--my-color-primary);
 }
