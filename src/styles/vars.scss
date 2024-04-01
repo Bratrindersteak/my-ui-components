@@ -28,3 +28,9 @@
   --my-border-color-disabled: #e4e7ed;
   --my-border-color-hover: var(--my-color-primary);
 }
+
+:root {
+  --my-cursor-text: text;
+  --my-cursor-pointer: pointer;
+  --my-cursor-disabled: not-allowed;
+}

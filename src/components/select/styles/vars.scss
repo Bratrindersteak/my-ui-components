@@ -1,0 +1,26 @@
+@use '@/styles/vars';
+
+.my-select {
+  --my-select-height: var(--my-height);
+  --my-select-font-size: var(--my-font-size);
+  --my-select-background-color: var(--my-background-color);
+  --my-select-border-color: var(--my-border-color);
+  --my-select-border-radius: var(--my-border-radius);
+  --my-select-cursor: var(--my-cursor-pointer);
+}
+
+.my-select-large {
+  --my-select-height: var(--my-height-large);
+  --my-select-font-size: var(--my-font-size-large);
+}
+
+.my-select-small {
+  --my-select-height: var(--my-height-small);
+  --my-select-font-size: var(--my-font-size-small);
+}
+
+.my-select-disabled {
+  --my-select-background-color: var(--my-background-color-disabled);
+  --my-select-border-color: var(--my-border-color-disabled);
+  --my-select-cursor: var(--my-cursor-disabled);
+}

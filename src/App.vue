@@ -5,6 +5,7 @@ import './styles/index.scss';
 import Button from './components/button/button.vue';
 import Checkbox from './components/checkbox/checkbox.vue';
 import Radio from './components/radio/radio.vue';
+import Select from './components/select/select.vue';
 import Input from './components/input/input.vue';
 import Icon from './components/icon/icon.vue';
 
@@ -112,6 +113,12 @@ watch(checkbox2, (newValue, oldValue) => {
     <Button shape="circle" icon="plus" size="large"></Button>
     <Button type="primary" shape="circle" icon="plus" size="small"></Button>
     <Button type="primary" disabled shape="circle">my button disabled 2</Button>
+  </div>
+
+  <div class="wrapper">
+    <Select size="large"></Select>
+    <Select disabled></Select>
+    <Select size="small"></Select>
   </div>
 </template>
 
