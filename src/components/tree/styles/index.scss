@@ -5,5 +5,25 @@
 }
 
 .my-tree-node {
+  display: none;
+  transition: display 0.2s;
+  cursor: pointer;
+}
 
+.my-tree-node-expand {
+  display: inline-block;
+  width: 24px;
+  padding: 5px;
+  box-sizing: border-box;
+  transition: transform 0.2s;
+}
+
+.my-tree-node-expanded {
+  .my-tree-node-expand {
+    transform: rotate(90deg);
+  }
+}
+
+.my-tree-node-display {
+  display: block;
 }

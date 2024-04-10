@@ -8,6 +8,8 @@ import Radio from './components/radio/radio.vue';
 import Select from './components/select/select.vue';
 import Input from './components/input/input.vue';
 import Icon from './components/icon/icon.vue';
+import Switch from './components/switch/switch.vue';
+import Tree from './components/tree/tree.vue';
 
 const buttonSize = ref('default');
 
@@ -48,6 +50,50 @@ const checkbox2 = ref(true);
 watch(checkbox2, (newValue, oldValue) => {
   console.log('checkbox2', { newValue, oldValue });
 });
+
+const treeExpandedKeys = ['1', '1-1', '1-1-1', '1-1-1-1', '1-1-2', '1-1-2-1', '2-1', '2-1-1', '2-1-1-1'];
+const treeData = [{
+  key: '1',
+  label: '节点1',
+  children: [{
+    key: '1-1',
+    label: '节点1-1',
+    children: [{
+      key: '1-1-1',
+      label: '节点1-1-1',
+      children: [{
+        key: '1-1-1-1',
+        label: '节点1-1-1-1',
+      }],
+    }, {
+      key: '1-1-2',
+      label: '节点1-1-2',
+      children: [{
+        key: '1-1-2-1',
+        label: '节点1-1-2-1',
+      }],
+    }],
+  }, {
+    key: '2-1',
+    label: '节点2-1',
+    children: [{
+      key: '2-1-1',
+      label: '节点2-1-1',
+      children: [{
+        key: '2-1-1-1',
+        label: '节点2-1-1-1',
+      }],
+    }],
+  }],
+}];
+
+const switch1 = ref(true);
+const switch2 = ref(true);
+const switch3 = ref(false);
+
+function handleSwitch3Change(value: boolean) {
+  console.log('handleSwitch3Change', value);
+}
 </script>
 
 <template>
@@ -119,6 +165,23 @@ watch(checkbox2, (newValue, oldValue) => {
     <Select size="large"></Select>
     <Select disabled></Select>
     <Select size="small"></Select>
+  </div>
+
+  <div class="wrapper">
+    <Tree :data="treeData" :expanded-keys="treeExpandedKeys"></Tree>
+  </div>
+
+  <div class="wrapper">
+    <Switch v-model="switch1" loading size="large"></Switch>
+    <Switch v-model="switch2"></Switch>
+    <Switch v-model="switch3" disabled on-icon="sun" off-icon="moon" on-text="开开开开开开开开" off-text="关关关关关关关关" size="small" @change="handleSwitch3Change">
+      <template #onIcon>
+        <icon type="check"></icon>
+      </template>
+      <template #offIcon>
+        <icon type="close"></icon>
+      </template>
+    </Switch>
   </div>
 </template>
 

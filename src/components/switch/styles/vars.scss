@@ -1,0 +1,46 @@
+@use '@/styles/vars';
+
+.my-switch {
+  --my-switch-height: var(--my-height);
+  --my-switch-font-size: var(--my-font-size);
+  --my-switch-color: var(--my-color-white);
+  --my-switch-cursor: pointer;
+  --my-switch-before-background-color: transparent;
+
+  &:hover:not(.my-switch-disabled, .my-switch-loading) {
+    &:before {
+      --my-switch-before-background-color: rgb(255, 255, 255, 0.3);
+    }
+  }
+}
+
+.my-switch-large {
+  --my-switch-height: var(--my-height-large);
+  --my-switch-font-size: var(--my-font-size-large);
+}
+
+.my-switch-small {
+  --my-switch-height: var(--my-height-small);
+  --my-switch-font-size: var(--my-font-size-small);
+}
+
+.my-switch-on {
+  --my-switch-background-color: var(--my-color-blue);
+}
+
+.my-switch-off {
+  --my-switch-background-color: #dcdfe6;
+}
+
+.my-switch-loading {
+  --my-switch-cursor: not-allowed;
+}
+
+.my-switch-disabled {
+  --my-switch-cursor: not-allowed;
+  --my-switch-before-background-color: rgb(255, 255, 255, 0.5);
+}
+
+.my-switch-ball {
+  --my-switch-ball-background-color: var(--my-color-white);
+}
