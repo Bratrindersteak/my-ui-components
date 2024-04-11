@@ -17,11 +17,16 @@
 }
 
 .my-select-options {
-  line-height: 1;
-  font-size: var(--my-select-font-size);
-  background-color: var(--my-select-background-color);
+  margin-top: 1px;
   border: 1px solid var(--my-select-border-color);
   border-radius: var(--my-select-border-radius);
+}
+
+.my-select-option {
+  line-height: var(--my-select-height);
+  font-size: var(--my-select-font-size);
+  padding: 0 calc(var(--my-select-height) / 4);
+  background-color: var(--my-select-option-background-color);
   box-sizing: border-box;
   cursor: var(--my-select-cursor);
 }

@@ -24,3 +24,10 @@
   --my-select-border-color: var(--my-border-color-disabled);
   --my-select-cursor: var(--my-cursor-disabled);
 }
+
+.my-select-option {
+  --my-select-option-background-color: transparent;
+  &:hover {
+    --my-select-option-background-color: var(--my-border-color);
+  }
+}

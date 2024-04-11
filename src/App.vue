@@ -51,6 +51,13 @@ watch(checkbox2, (newValue, oldValue) => {
   console.log('checkbox2', { newValue, oldValue });
 });
 
+const selectData2 = [
+  { value: 1, label: 'a' },
+  { value: 2, label: 'b' },
+  { value: 3, label: 'c' },
+  { value: 4, label: 'd' },
+];
+
 const treeExpandedKeys = ['1', '1-1', '1-1-1', '1-1-1-1', '1-1-2', '1-1-2-1', '2-1', '2-1-1', '2-1-1-1'];
 const treeData = [{
   key: '1',
@@ -163,7 +170,7 @@ function handleSwitch3Change(value: boolean) {
 
   <div class="wrapper">
     <Select size="large"></Select>
-    <Select disabled></Select>
+    <Select :data="selectData2"></Select>
     <Select size="small"></Select>
   </div>
 

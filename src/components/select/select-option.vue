@@ -1,21 +1,13 @@
 <template>
-  <div :class="classes" :style="styles">
-    <div :class="`${toKebabCase(name)}-frame`"></div>
-    <ul :class="`${toKebabCase(name)}-options`">
-      <template v-for="item in data" :key="item.value">
-        <select-option :data="item" :disabled="disabled" :size="size"></select-option>
-      </template>
-    </ul>
-  </div>
+  <li :class="classes">{{ data.label }}</li>
 </template>
 
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue';
 import { genId, toKebabCase, toPascalCase } from '@/utils';
-import SelectOption from './select-option.vue';
 import type { Size, OptionData } from './type';
+import { computed } from 'vue';
 
-const name = 'mySelect';
+const name = 'mySelectOption';
 
 const id = genId(name);
 
@@ -24,13 +16,12 @@ defineOptions({
 });
 
 interface Props {
-  data?: Array<OptionData>
+  data: OptionData
   disabled?: boolean
   size?: Size
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  data: () => [],
   disabled: false,
   size: 'default',
 });
@@ -43,7 +34,4 @@ const classes = computed(() => {
     size !== 'default' ? `${toKebabCase(name)}-${size}` : '',
   ];
 });
-const styles = computed(() => ({}));
 </script>
-
-<style lang="scss" src="./styles/index.scss"></style>
