@@ -1,5 +1,5 @@
 <template>
-  <li :class="classes">{{ data.label }}</li>
+  <li :class="classes" @click="handleClick">{{ data.label }}</li>
 </template>
 
 <script setup lang="ts">
@@ -17,6 +17,7 @@ defineOptions({
 
 interface Props {
   data: OptionData
+  selected?: boolean
   disabled?: boolean
   size?: Size
 }
@@ -27,11 +28,18 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 const classes = computed(() => {
-  const { disabled, size } = props;
+  const { selected, disabled, size } = props;
   return [
     toKebabCase(name),
+    selected ? `${toKebabCase(name)}-selected` : '',
     disabled ? `${toKebabCase(name)}-disabled` : '',
     size !== 'default' ? `${toKebabCase(name)}-${size}` : '',
   ];
 });
+
+const emit = defineEmits(['select']);
+
+function handleClick() {
+  emit('select', props.data.value);
+}
 </script>

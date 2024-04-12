@@ -51,6 +51,7 @@ watch(checkbox2, (newValue, oldValue) => {
   console.log('checkbox2', { newValue, oldValue });
 });
 
+const select2 = ref(2);
 const selectData2 = [
   { value: 1, label: 'a' },
   { value: 2, label: 'b' },
@@ -170,7 +171,7 @@ function handleSwitch3Change(value: boolean) {
 
   <div class="wrapper">
     <Select size="large"></Select>
-    <Select :data="selectData2"></Select>
+    <Select v-model="select2" :data="selectData2"></Select>
     <Select size="small"></Select>
   </div>
 
