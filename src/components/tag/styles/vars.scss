@@ -1,0 +1,13 @@
+@use '@/styles/vars';
+
+.my-tag {
+  --my-tag-height: var(--my-height);
+}
+
+.my-tag-large {
+  --my-tag-height: var(--my-height-large);
+}
+
+.my-tag-small {
+  --my-tag-height: var(--my-height-small);
+}

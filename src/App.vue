@@ -9,6 +9,7 @@ import Select from './components/select/select.vue';
 import Input from './components/input/input.vue';
 import Icon from './components/icon/icon.vue';
 import Switch from './components/switch/switch.vue';
+import Tag from './components/tag/tag.vue';
 import Tree from './components/tree/tree.vue';
 
 const buttonSize = ref('default');
@@ -167,6 +168,12 @@ function handleSwitch3Change(value: boolean) {
     <Button shape="circle" icon="plus" size="large"></Button>
     <Button type="primary" shape="circle" icon="plus" size="small"></Button>
     <Button type="primary" disabled shape="circle">my button disabled 2</Button>
+  </div>
+
+  <div class="wrapper">
+    <Tag size="large"></Tag>
+    <Tag></Tag>
+    <Tag size="small"></Tag>
   </div>
 
   <div class="wrapper">

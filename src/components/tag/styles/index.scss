@@ -1,0 +1,5 @@
+@use './vars';
+
+.my-tag {
+  height: var(--my-tag-height);
+}

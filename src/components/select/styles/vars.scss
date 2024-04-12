@@ -3,6 +3,7 @@
 .my-select {
   --my-select-height: var(--my-height);
   --my-select-font-size: var(--my-font-size);
+  --my-select-color: var(--my-color);
   --my-select-background-color: var(--my-background-color);
   --my-select-border-color: var(--my-border-color);
   --my-select-border-radius: var(--my-border-radius);
@@ -23,6 +24,22 @@
   --my-select-background-color: var(--my-background-color-disabled);
   --my-select-border-color: var(--my-border-color-disabled);
   --my-select-cursor: var(--my-cursor-disabled);
+}
+
+.my-select-options {
+  --my-select-options-display: none;
+  --my-select-options-height: 0;
+}
+
+.my-select-opened {
+  .my-select-suffix {
+    transform: rotate(180deg);
+  }
+
+  .my-select-options {
+    --my-select-options-display: block;
+    --my-select-options-height: fit-content;
+  }
 }
 
 .my-select-option {
