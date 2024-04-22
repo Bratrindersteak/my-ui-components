@@ -2,12 +2,53 @@
 
 .my-tag {
   --my-tag-height: var(--my-height);
+  --my-tag-font-size: var(--my-font-size);
+  --my-tag-color: rgba(0, 0, 0, 0.88);
+  --my-tag-background-color: rgba(0, 0, 0, 0.02);
+  --my-tag-border-color: #d9d9d9;
+  --my-tag-border-radius: var(--my-border-radius);
 }
 
 .my-tag-large {
   --my-tag-height: var(--my-height-large);
+  --my-tag-font-size: var(--my-font-size-large);
 }
 
 .my-tag-small {
   --my-tag-height: var(--my-height-small);
+  --my-tag-font-size: var(--my-font-size-small);
+}
+
+.my-tag-primary {
+  --my-tag-color: #1677ff;
+  --my-tag-background-color: #e6f4ff;
+  --my-tag-border-color: #91caff;
+}
+
+.my-tag-success {
+  --my-tag-color: #52c41a;
+  --my-tag-background-color: #f6ffed;
+  --my-tag-border-color: #b7eb8f;
+}
+
+.my-tag-warning {
+  --my-tag-color: #faad14;
+  --my-tag-background-color: #fffbe6;
+  --my-tag-border-color: #ffe58f;
+}
+
+.my-tag-danger {
+  --my-tag-color: #ff4d4f;
+  --my-tag-background-color: #fff2f0;
+  --my-tag-border-color: #ffccc7;
+}
+
+.my-tag-close {
+  --my-tag-close-cursor: var(--my-cursor-pointer);
+}
+
+.my-tag-disabled {
+  .my-tag-close {
+    --my-tag-close-cursor: var(--my-cursor-disabled);
+  }
 }

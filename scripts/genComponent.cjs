@@ -30,7 +30,7 @@ const vueData = `<template>
 
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue';
-import { genId, toKebabCase, toPascalCase } from "@/utils";
+import { genId, toKebabCase, toPascalCase } from '@/utils';
 
 const name = 'my${ComponentName}';
 

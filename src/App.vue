@@ -171,9 +171,16 @@ function handleSwitch3Change(value: boolean) {
   </div>
 
   <div class="wrapper">
-    <Tag size="large"></Tag>
-    <Tag></Tag>
-    <Tag size="small"></Tag>
+    <Tag type="primary" size="large">tag1</Tag>
+    <Tag type="success">tag2</Tag>
+    <Tag type="warning" size="small">tag3</Tag>
+    <Tag type="danger">tag4</Tag>
+    <Tag>tag5</Tag>
+    <Tag type="primary" closeable size="large">tag6</Tag>
+    <Tag type="success" closeable>tag7</Tag>
+    <Tag type="warning" closeable size="small">tag8</Tag>
+    <Tag type="danger" closeable>tag9</Tag>
+    <Tag closeable>tag10</Tag>
   </div>
 
   <div class="wrapper">

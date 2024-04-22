@@ -1,11 +1,6 @@
 <template>
   <div :class="classes" :style="styles">
-    <div :class="`${toKebabCase(name)}-frame`" @click="handleClick">
-      <span :class="`${toKebabCase(name)}-label`">{{ selected.label }}</span>
-      <span :class="`${toKebabCase(name)}-suffix`">
-        <Icon type="arrowhead-bottom"></Icon>
-      </span>
-    </div>
+    <div :class="`${toKebabCase(name)}-frame`">{{ selected.label }}</div>
     <ul :class="`${toKebabCase(name)}-options`">
       <template v-for="item in data" :key="item.value">
         <select-option :data="item" :selected="isOptionSelected(item.value)" :disabled="disabled" :size="size" @select="handleSelect"></select-option>
@@ -18,7 +13,6 @@
 import { computed, ref, watch } from 'vue';
 import { genId, toKebabCase, toPascalCase } from '@/utils';
 import SelectOption from './select-option.vue';
-import Icon from '@/components/icon';
 import type { ComputedRef } from 'vue';
 import type { Size, OptionData } from './type';
 
@@ -87,18 +81,11 @@ const classes = computed(() => {
     toKebabCase(name),
     disabled ? `${toKebabCase(name)}-disabled` : '',
     size !== 'default' ? `${toKebabCase(name)}-${size}` : '',
-    opened.value ? `${toKebabCase(name)}-opened` : '',
   ];
 });
 const styles = computed(() => ({}));
 
 const emit = defineEmits(['change']);
-
-const opened = ref(false);
-
-function handleClick() {
-  opened.value = !opened.value;
-}
 </script>
 
 <style lang="scss" src="./styles/index.scss"></style>
