@@ -41,14 +41,15 @@ const classes = computed(() => {
 });
 const styles = computed(() => ({}));
 
-const emit = defineEmits(['change', 'close']);
+const emit = defineEmits(['click', 'change', 'close']);
 
-function handleClick() {
-
+function handleClick(event: Event) {
+  emit('click', event);
 }
 
-function handleClose() {
-
+function handleClose(event: Event) {
+  event.stopPropagation();
+  emit('close', event);
 }
 
 interface Slots {

@@ -1,7 +1,13 @@
 <template>
-  <div :class="classes" :style="styles">
-    <div :class="`${toKebabCase(name)}-frame`">{{ selected.label }}</div>
-    <ul :class="`${toKebabCase(name)}-options`">
+  <div :class="classes">
+    <div :class="`${toKebabCase(name)}-frame`" @click="handleClick">
+      <template v-if="model">
+        <tag v-if="multiple" closeable :size="size" @click="handleTagClick(selected.value)" @close="handleTagClose(selected.value)">{{ selected.label }}</tag>
+        <template v-else>{{ selected.label }}</template>
+      </template>
+      <span v-else :class="`${toKebabCase(name)}-placeholder`">{{ placeholder }}</span>
+    </div>
+    <ul :class="`${toKebabCase(name)}-options`" :style="{ display: folded ? 'none' : 'block' }">
       <template v-for="item in data" :key="item.value">
         <select-option :data="item" :selected="isOptionSelected(item.value)" :disabled="disabled" :size="size" @select="handleSelect"></select-option>
       </template>
@@ -13,8 +19,9 @@
 import { computed, ref, watch } from 'vue';
 import { genId, toKebabCase, toPascalCase } from '@/utils';
 import SelectOption from './select-option.vue';
+import Tag from '@/components/tag';
 import type { ComputedRef } from 'vue';
-import type { Size, OptionData } from './type';
+import type { Size, Key, OptionData } from './type';
 
 const name = 'mySelect';
 
@@ -59,9 +66,26 @@ function handleSelect(key: string | number) {
   }
 }
 
+function handleClick() {
+  folded.value = !folded.value;
+}
+
+function handleTagClick(key: Key) {
+  console.log('<select>', 'handleTagClick', '点击这个标签', key);
+}
+
+function handleTagClose(key: Key) {
+  console.log('<select>', 'handleTagClose', '反选这个标签', key);
+}
+
+function handleClear() {
+  console.log('<select>', 'handleClear', '清空选项');
+}
+
 interface Props {
   data?: Array<OptionData>
   multiple?: boolean
+  clearable?: boolean
   disabled?: boolean
   size?: Size
   placeholder?: string
@@ -70,9 +94,10 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {
   data: () => [],
   multiple: false,
+  clearable: false,
   disabled: false,
   size: 'default',
-  placeholder: '',
+  placeholder: '请选择',
 });
 
 const classes = computed(() => {
@@ -83,7 +108,13 @@ const classes = computed(() => {
     size !== 'default' ? `${toKebabCase(name)}-${size}` : '',
   ];
 });
-const styles = computed(() => ({}));
+
+const folded = ref(true);
+const styles = computed(() => {
+  return {
+    display: '',
+  };
+});
 
 const emit = defineEmits(['change']);
 </script>

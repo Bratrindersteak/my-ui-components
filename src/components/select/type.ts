@@ -1,8 +1,8 @@
 export type Size = 'default' | 'large' | 'small';
-
+export type Key = string | number;
 export type OptionData = {
-  key?: string;
-  value: string | number;
+  key?: Key;
+  value: Key;
   label: string;
   disabled?: boolean;
 }

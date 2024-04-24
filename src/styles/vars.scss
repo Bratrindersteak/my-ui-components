@@ -3,6 +3,9 @@
   --my-height-small: 24px;
   --my-height: 32px;
   --my-height-large: 40px;
+  --my-lower-height-small: 16px;
+  --my-lower-height: 22px;
+  --my-lower-height-large: 28px;
 
   --my-font-size-small: 12px;
   --my-font-size: 14px;
@@ -39,6 +42,8 @@
   --my-color-danger: var(--my-color-blue);
   --my-background-color-danger: var(--my-color-blue);
   --my-border-color-danger: var(--my-color-blue);
+
+  --my-color-placeholder: #a8abb2;
 
   --my-color-disabled: #a8abb2;
   --my-background-color-disabled: #f5f7fa;

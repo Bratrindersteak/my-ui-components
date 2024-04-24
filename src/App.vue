@@ -52,6 +52,13 @@ watch(checkbox2, (newValue, oldValue) => {
   console.log('checkbox2', { newValue, oldValue });
 });
 
+const select1 = ref('a');
+const selectData1 = [
+  { value: 'a', label: 'a' },
+  { value: 'b', label: 'b', disabled: true },
+  { value: 'c', label: 'c' },
+  { value: 'd', label: 'd' },
+];
 const select2 = ref(2);
 const selectData2 = [
   { value: 1, label: 'a' },
@@ -184,8 +191,8 @@ function handleSwitch3Change(value: boolean) {
   </div>
 
   <div class="wrapper">
-    <Select size="large"></Select>
-    <Select v-model="select2" :data="selectData2"></Select>
+    <Select v-model="select1" :data="selectData1" size="large"></Select>
+    <Select v-model="select2" multiple :data="selectData2"></Select>
     <Select size="small"></Select>
   </div>
 

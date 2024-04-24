@@ -1,7 +1,7 @@
 @use '@/styles/vars';
 
 .my-tag {
-  --my-tag-height: var(--my-height);
+  --my-tag-height: var(--my-lower-height);
   --my-tag-font-size: var(--my-font-size);
   --my-tag-color: rgba(0, 0, 0, 0.88);
   --my-tag-background-color: rgba(0, 0, 0, 0.02);
@@ -10,12 +10,12 @@
 }
 
 .my-tag-large {
-  --my-tag-height: var(--my-height-large);
+  --my-tag-height: var(--my-lower-height-large);
   --my-tag-font-size: var(--my-font-size-large);
 }
 
 .my-tag-small {
-  --my-tag-height: var(--my-height-small);
+  --my-tag-height: var(--my-lower-height-small);
   --my-tag-font-size: var(--my-font-size-small);
 }
 
