@@ -11,6 +11,7 @@ import Icon from './components/icon/icon.vue';
 import Switch from './components/switch/switch.vue';
 import Tag from './components/tag/tag.vue';
 import Tree from './components/tree/tree.vue';
+import Pagination from './components/pagination/pagination.vue';
 
 const buttonSize = ref('default');
 
@@ -110,6 +111,11 @@ const switch3 = ref(false);
 function handleSwitch3Change(value: boolean) {
   console.log('handleSwitch3Change', value);
 }
+
+const pagination2 = ref(3);
+watch(pagination2, (newValue, oldValue) => {
+  console.log('pagination2', { newValue, oldValue });
+});
 </script>
 
 <template>
@@ -211,6 +217,18 @@ function handleSwitch3Change(value: boolean) {
         <icon type="close"></icon>
       </template>
     </Switch>
+  </div>
+
+  <div class="wrapper">
+    <div class="wrapper">
+      <Pagination disabled :current-page="6" :total="100" size="large"></Pagination>
+    </div>
+    <div class="wrapper">
+      <Pagination v-model:current-page="pagination2" :total="100"></Pagination>
+    </div>
+    <div class="wrapper">
+      <Pagination size="small"></Pagination>
+    </div>
   </div>
 </template>
 

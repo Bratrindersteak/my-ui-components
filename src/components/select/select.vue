@@ -2,8 +2,10 @@
   <div :class="classes">
     <div :class="`${toKebabCase(name)}-frame`" @click="handleClick">
       <template v-if="model">
-        <tag v-if="multiple" closeable :size="size" @click="handleTagClick(selected.value)" @close="handleTagClose(selected.value)">{{ selected.label }}</tag>
-        <template v-else>{{ selected.label }}</template>
+        <template v-if="multiple">
+          <tag v-for="selectedItem in selectedData" :key="selectedItem.value" closeable :size="size" @click="handleTagClick(selectedItem.value)" @close="handleTagClose(selectedItem.value)">{{ selectedItem.label }}</tag>
+        </template>
+        <template v-else>{{ selectedData.label }}</template>
       </template>
       <span v-else :class="`${toKebabCase(name)}-placeholder`">{{ placeholder }}</span>
     </div>
@@ -31,7 +33,15 @@ defineOptions({
   name: toPascalCase(name),
 });
 
-const model = defineModel<string|number|boolean|Array<any>>();
+const model = defineModel<Key | Key[]>();
+const selectedData: ComputedRef<OptionData | OptionData[] | {}> = computed(() => {
+  if (props.multiple) {
+    return [];
+    // return props.data.filter(({ value }) => model.value?.includes(value));
+  } else {
+    return props.data.find(({ value }) => value === model.value) || {};
+  }
+});
 
 watch(model, (value) => {
   if (Array.isArray(value)) {
@@ -44,9 +54,7 @@ watch(model, (newValue, oldValue) => {
   emit('change', newValue);
 });
 
-const selected: ComputedRef<OptionData | {}> = computed(() => props.data.find(({ value }) => value === model.value) || {});
-
-function isOptionSelected(key: string | number): boolean {
+function isOptionSelected(key: Key): boolean {
   if (Array.isArray(model.value)) {
     return model.value.includes(key);
   } else {
@@ -54,7 +62,7 @@ function isOptionSelected(key: string | number): boolean {
   }
 }
 
-function handleSelect(key: string | number) {
+function handleSelect(key: Key) {
   if (Array.isArray(model.value)) {
     const targetIndex = model.value.findIndex(i => i === key);
 

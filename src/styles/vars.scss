@@ -12,6 +12,7 @@
   --my-font-size-large: 16px;
 
   --my-border-radius: 4px;
+  --my-border-radius-light: 2px;
 }
 
 /* 基本颜色 */
@@ -26,6 +27,8 @@
   --my-color: #606266;
   --my-background-color: transparent;
   --my-border-color: #d9d9d9;
+
+  --my-background-color-default: #f0f2f5;
 
   --my-color-primary: var(--my-color-blue);
   --my-background-color-primary: var(--my-color-blue);
@@ -56,6 +59,7 @@
 
 /* 鼠标样式 */
 :root {
+  --my-cursor-default: default;
   --my-cursor-text: text;
   --my-cursor-pointer: pointer;
   --my-cursor-disabled: not-allowed;

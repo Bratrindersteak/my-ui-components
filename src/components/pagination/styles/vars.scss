@@ -1,0 +1,59 @@
+@use '@/styles/vars';
+
+.my-pagination {
+  --my-pagination-height: var(--my-height);
+  --my-pagination-font-size: var(--my-font-size);
+  --my-pagination-color: var(--my-color);
+}
+
+.my-pagination-large {
+  --my-pagination-height: var(--my-height-large);
+  --my-pagination-font-size: var(--my-font-size-large);
+
+  .my-pagination-item {
+    --my-pagination-item-width: var(--my-pagination-height);
+    --my-pagination-item-height: var(--my-pagination-height);
+  }
+}
+
+.my-pagination-small {
+  --my-pagination-height: var(--my-height-small);
+  --my-pagination-font-size: var(--my-font-size-small);
+
+  .my-pagination-item {
+    --my-pagination-item-width: var(--my-pagination-height);
+    --my-pagination-item-height: var(--my-pagination-height);
+  }
+}
+
+.my-pagination-item {
+  --my-pagination-item-width: var(--my-pagination-height);
+  --my-pagination-item-height: var(--my-pagination-height);
+  --my-pagination-item-color: var(--my-color);
+  --my-pagination-item-background-color: var(--my-background-color-default);
+  --my-pagination-item-border-radius: var(--my-border-radius-light);
+
+  &:hover:not(.my-pagination-item-active, .my-pagination-item-disabled) {
+    --my-pagination-item-color: var(--my-color-primary);
+  }
+
+  --my-pagination-item-cursor: var(--my-cursor-pointer);
+}
+
+.my-pagination-item-active {
+  --my-pagination-item-color: var(--my-color-white);
+  --my-pagination-item-background-color: var(--my-background-color-primary);
+  --my-pagination-item-cursor: var(--my-cursor-default);
+
+  &.my-pagination-item-disabled {
+    --my-pagination-item-color: #909399;
+    --my-pagination-item-background-color: #ebedf0;
+    --my-pagination-item-font-weight: bold;
+  }
+}
+
+.my-pagination-item-disabled {
+  --my-pagination-item-color: var(--my-color-disabled);
+  --my-pagination-item-background-color: var(--my-background-color-disabled);
+  --my-pagination-item-cursor: var(--my-cursor-disabled);
+}

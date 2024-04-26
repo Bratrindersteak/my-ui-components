@@ -14,6 +14,7 @@ import { defineComponent } from 'vue';
 import ArrowheadTop from '@/icons/arrowhead-top.vue';
 import ArrowheadRight from '@/icons/arrowhead-right.vue';
 import ArrowheadBottom from '@/icons/arrowhead-bottom.vue';
+import ArrowheadLeft from '@/icons/arrowhead-left.vue';
 import CaretRight from '@/icons/caret-right.vue';
 import Check from '@/icons/check.vue';
 import Close from '@/icons/close.vue';
@@ -31,7 +32,7 @@ import Sun from '@/icons/sun.vue';
 import User from '@/icons/user.vue';
 
 export default defineComponent({
-  components: { ArrowheadTop, ArrowheadRight, ArrowheadBottom, CaretRight, Check, Close, CloseCircle, CloseCircleFilled, Eye, Folder, FolderOpened, Hide, Moon, Plus, Loading, Search, Sun, User },
+  components: { ArrowheadTop, ArrowheadRight, ArrowheadBottom, ArrowheadLeft, CaretRight, Check, Close, CloseCircle, CloseCircleFilled, Eye, Folder, FolderOpened, Hide, Moon, Plus, Loading, Search, Sun, User },
   name: 'MyIcon',
   props: {
     type: {

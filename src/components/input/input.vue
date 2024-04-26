@@ -11,6 +11,7 @@
       </div>
       <input ref="input" :type="visible ? 'text' : type" :id="id" :class="`${toKebabCase(name)}-origin`"
              v-model="model" :disabled="disabled" :placeholder="placeholder"
+             @keyup.enter="handlePressEnter"
       />
       <div v-if="$slots.suffix || suffix" :class="`${toKebabCase(name)}-suffix`">
         <slot v-if="$slots.suffix" name="suffix"></slot>
@@ -81,6 +82,12 @@ const styles = computed(() => ({}));
 
 const showClearable = computed(() => props.clearable && model.value && !props.disabled);
 const showVisible = computed(() => props.type === 'password' && model.value && !props.disabled);
+
+const emit = defineEmits(['pressEnter']);
+
+function handlePressEnter(event: Event) {
+  emit('pressEnter', event);
+}
 
 interface Slots {
   prepend(): any

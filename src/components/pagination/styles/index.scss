@@ -1,0 +1,26 @@
+@use './vars';
+
+.my-pagination {
+  display: flex;
+  font-size: var(--my-pagination-font-size);
+  color: var(--my-pagination-color);
+}
+
+.my-pagination-item {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: var(--my-pagination-item-width);
+  height: var(--my-pagination-item-height);
+  margin: 0 4px;
+  font-weight: var(--my-pagination-item-font-weight, normal);
+  color: var(--my-pagination-item-color);
+  background-color: var(--my-pagination-item-background-color);
+  border-radius: var(--my-pagination-item-border-radius);
+  cursor: var(--my-pagination-item-cursor);
+  user-select: none;
+}
+
+.my-pagination-item-prev, .my-pagination-item-next {
+  vertical-align: bottom;
+}
