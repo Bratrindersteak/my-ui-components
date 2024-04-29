@@ -19,8 +19,24 @@
   border-radius: var(--my-pagination-item-border-radius);
   cursor: var(--my-pagination-item-cursor);
   user-select: none;
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
 }
 
 .my-pagination-item-prev, .my-pagination-item-next {
   vertical-align: bottom;
+}
+
+.my-pagination-sizes {
+  margin: 0 8px;
+}
+
+.my-pagination-jumper .my-input {
+  margin: 0 8px;
 }

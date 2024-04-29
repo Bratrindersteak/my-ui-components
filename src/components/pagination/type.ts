@@ -1,5 +1,6 @@
 export type Type = 'default' | 'simple';
 export type Size = 'default' | 'large' | 'small';
+
 export interface Props {
   disabled?: boolean
   type?: Type
@@ -8,6 +9,7 @@ export interface Props {
   defaultCurrentPage?: number
   pageSize?: number
   defaultPageSize?: number
+  pageSizes?: Array<number>
   total?: number
 }
 

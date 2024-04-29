@@ -1,7 +1,7 @@
 <template>
-  <div :class="classes">
+  <div :id="id" :class="classes">
     <div :class="`${toKebabCase(name)}-frame`" @click="handleClick">
-      <template v-if="model">
+      <template v-if="modelValue">
         <template v-if="multiple">
           <tag v-for="selectedItem in selectedData" :key="selectedItem.value" closeable :size="size" @click="handleTagClick(selectedItem.value)" @close="handleTagClose(selectedItem.value)">{{ selectedItem.label }}</tag>
         </template>
@@ -23,7 +23,7 @@ import { genId, toKebabCase, toPascalCase } from '@/utils';
 import SelectOption from './select-option.vue';
 import Tag from '@/components/tag';
 import type { ComputedRef } from 'vue';
-import type { Size, Key, OptionData } from './type';
+import type { Key, OptionData, Props } from './type';
 
 const name = 'mySelect';
 
@@ -33,44 +33,39 @@ defineOptions({
   name: toPascalCase(name),
 });
 
-const model = defineModel<Key | Key[]>();
 const selectedData: ComputedRef<OptionData | OptionData[] | {}> = computed(() => {
   if (props.multiple) {
     return [];
-    // return props.data.filter(({ value }) => model.value?.includes(value));
   } else {
-    return props.data.find(({ value }) => value === model.value) || {};
+    return props.data.find(({ value }) => value === props.modelValue) || {};
   }
-});
-
-watch(model, (value) => {
-  if (Array.isArray(value)) {
-    model.value = [...new Set(value)];
-  }
-}, { immediate: true, once: true });
-
-watch(model, (newValue, oldValue) => {
-  console.log('select model change', { newValue, oldValue });
-  emit('change', newValue);
 });
 
 function isOptionSelected(key: Key): boolean {
-  if (Array.isArray(model.value)) {
-    return model.value.includes(key);
+  const { multiple, modelValue } = props;
+  if (multiple) {
+    return Array.isArray(modelValue) ? modelValue.includes(key) : false;
   } else {
-    return model.value === key;
+    return modelValue === key;
   }
 }
 
 function handleSelect(key: Key) {
-  if (Array.isArray(model.value)) {
-    const targetIndex = model.value.findIndex(i => i === key);
-
+  const { multiple, modelValue } = props;
+  if (multiple) {
+    const multipleValue = Array.isArray(modelValue) ? [...new Set(modelValue)] : [];
+    const targetIndex = multipleValue.findIndex(i => i === key);
     if (targetIndex !== -1) {
-      model.value.splice(targetIndex, 1);
+      multipleValue.splice(targetIndex, 1)
+    } else {
+      multipleValue.push(key);
     }
+
+    emit('update:modelValue', multipleValue);
+    emit('change', multipleValue);
   } else {
-    model.value = key;
+    emit('update:modelValue', key);
+    emit('change', key);
   }
 }
 
@@ -86,17 +81,11 @@ function handleTagClose(key: Key) {
   console.log('<select>', 'handleTagClose', '反选这个标签', key);
 }
 
-function handleClear() {
+function handleClear(event: Event) {
   console.log('<select>', 'handleClear', '清空选项');
-}
-
-interface Props {
-  data?: Array<OptionData>
-  multiple?: boolean
-  clearable?: boolean
-  disabled?: boolean
-  size?: Size
-  placeholder?: string
+  emit('update:modelValue', props.multiple ? [] : undefined);
+  emit('change', props.multiple ? [] : undefined);
+  emit('clear', event);
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -124,7 +113,7 @@ const styles = computed(() => {
   };
 });
 
-const emit = defineEmits(['change']);
+const emit = defineEmits(['update:modelValue', 'change', 'clear']);
 </script>
 
 <style lang="scss" src="./styles/index.scss"></style>

@@ -2,10 +2,12 @@
 
 ## 整体
 
+- [ ] 增加 value 属性、change 事件的 API
 - [ ] focus、blur 事件及样式
 
 ## 选择框
 
+- [ ] 清空选项功能
 - [ ] 多个选中项的样式
 - [ ] suffix
 - [ ] hover样式

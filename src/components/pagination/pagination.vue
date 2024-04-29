@@ -13,7 +13,8 @@
         <icon v-else type="arrowhead-right"></icon>
       </li>
     </ul>
-    <div>跳至 <Input type="number" v-model="jumper" :size="size" :style="{ width: '50px' }" @press-enter="handleJump"></Input> 页</div>
+    <div :class="`${toKebabCase(name)}-sizes`"><Select v-model="currentSize" :data="sizes" :size="size" @change="handleSizeChange"></Select></div>
+    <div :class="`${toKebabCase(name)}-jumper`">跳至<Input type="number" v-model="jumper" :size="size" :style="{ width: '50px' }" @press-enter="handleJumperPressEnter" @blur="handleJumperBlur"></Input>页</div>
   </div>
 </template>
 
@@ -39,10 +40,9 @@ const props = withDefaults(defineProps<Props>(), {
   size: 'default',
   defaultCurrentPage: 1,
   defaultPageSize: 10,
+  pageSizes: () => [10, 20, 50, 100],
   total: 0,
 });
-
-const jumper = ref(props.currentPage || props.defaultCurrentPage);
 
 const totalPages = computed(() => {
   const { pageSize, defaultPageSize, total } = props;
@@ -113,13 +113,46 @@ function handleNextClick() {
   emit('currentChange', currentPage + 1);
 }
 
-function handleJump() {
-  if (!Number.isSafeInteger(jumper.value) || jumper.value < 1 || jumper.value > totalPages.value) {
+const currentSize = ref(props.pageSize || props.defaultPageSize);
+watch(currentSize, () => {
+  if (props.currentPage > totalPages.value) {
+    jumper.value = totalPages.value;
+    emit('update:currentPage', totalPages.value);
+    emit('currentChange', totalPages.value);
+  }
+});
+const sizes = computed(() => {
+  return props.pageSizes.map(size => ({ value: size, label: `${size} 条/页` }));
+});
+
+function handleSizeChange(event: Event) {
+  emit('update:pageSize', event);
+  emit('sizeChange', event);
+}
+
+const jumper = ref(props.currentPage || props.defaultCurrentPage);
+
+function handleJumperPressEnter() {
+  if (!Number.isSafeInteger(jumper.value)) {
     return;
+  }
+
+  if (jumper.value < 1) {
+    jumper.value = 1;
+  } else if (jumper.value > totalPages.value) {
+    jumper.value = totalPages.value;
   }
 
   emit('update:currentPage', jumper.value);
   emit('currentChange', jumper.value);
+}
+
+function handleJumperBlur() {
+  if (jumper.value === props.currentPage) {
+    return;
+  }
+
+  jumper.value = props.currentPage;
 }
 
 const slots = defineSlots<Slots>();

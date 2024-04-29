@@ -11,7 +11,7 @@
       </div>
       <input ref="input" :type="visible ? 'text' : type" :id="id" :class="`${toKebabCase(name)}-origin`"
              v-model="model" :disabled="disabled" :placeholder="placeholder"
-             @keyup.enter="handlePressEnter"
+             @keyup.enter="handlePressEnter" @focus="handleFocus" @blur="handleBlur"
       />
       <div v-if="$slots.suffix || suffix" :class="`${toKebabCase(name)}-suffix`">
         <slot v-if="$slots.suffix" name="suffix"></slot>
@@ -44,7 +44,7 @@ defineOptions({
   name: toPascalCase(name),
 });
 
-const model = defineModel<string>();
+const model = defineModel<string | number>();
 const visible = ref(false);
 
 type Type = 'text' | 'textarea' | 'password' | 'button' | 'checkbox' | 'radio' | 'file' | 'number';
@@ -83,10 +83,18 @@ const styles = computed(() => ({}));
 const showClearable = computed(() => props.clearable && model.value && !props.disabled);
 const showVisible = computed(() => props.type === 'password' && model.value && !props.disabled);
 
-const emit = defineEmits(['pressEnter']);
+const emit = defineEmits(['pressEnter', 'focus', 'blur']);
 
 function handlePressEnter(event: Event) {
   emit('pressEnter', event);
+}
+
+function handleFocus(event: Event) {
+  emit('focus', event);
+}
+
+function handleBlur(event: Event) {
+  emit('blur', event);
 }
 
 interface Slots {

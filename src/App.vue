@@ -112,9 +112,13 @@ function handleSwitch3Change(value: boolean) {
   console.log('handleSwitch3Change', value);
 }
 
-const pagination2 = ref(3);
+const pagination2 = ref(1);
 watch(pagination2, (newValue, oldValue) => {
   console.log('pagination2', { newValue, oldValue });
+});
+const pageSize2 = ref(50);
+watch(pageSize2, (newValue, oldValue) => {
+  console.log('pageSize2', { newValue, oldValue });
 });
 </script>
 
@@ -224,7 +228,7 @@ watch(pagination2, (newValue, oldValue) => {
       <Pagination disabled :current-page="6" :total="100" size="large"></Pagination>
     </div>
     <div class="wrapper">
-      <Pagination v-model:current-page="pagination2" :total="100"></Pagination>
+      <Pagination v-model:current-page="pagination2" v-model:page-size="pageSize2" :total="100"></Pagination>
     </div>
     <div class="wrapper">
       <Pagination size="small"></Pagination>
