@@ -13,8 +13,8 @@
         <icon v-else type="arrowhead-right"></icon>
       </li>
     </ul>
-    <div :class="`${toKebabCase(name)}-sizes`"><Select v-model="currentSize" :data="sizes" :size="size" @change="handleSizeChange"></Select></div>
-    <div :class="`${toKebabCase(name)}-jumper`">跳至<Input type="number" v-model="jumper" :size="size" :style="{ width: '50px' }" @press-enter="handleJumperPressEnter" @blur="handleJumperBlur"></Input>页</div>
+    <div :class="`${toKebabCase(name)}-sizes`"><Select v-model="currentSize" :data="sizes" :disabled="disabled" :size="size" @change="handleSizeChange"></Select></div>
+    <div :class="`${toKebabCase(name)}-jumper`">跳至<Input type="number" v-model="jumper" :disabled="disabled" :size="size" :style="{ width: '50px' }" @press-enter="handleJumperPressEnter" @blur="handleJumperBlur"></Input>页</div>
   </div>
 </template>
 
@@ -54,9 +54,10 @@ const totalPages = computed(() => {
 });
 
 const classes = computed(() => {
-  const { type, size } = props;
+  const { disabled, type, size } = props;
   return [
     toKebabCase(name),
+    disabled ? `${toKebabCase(name)}-disabled` : '',
     type !== 'default' ? `${toKebabCase(name)}-${type}` : '',
     size !== 'default' ? `${toKebabCase(name)}-${size}` : '',
   ];

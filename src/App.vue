@@ -24,6 +24,7 @@ function onSizeChange(event: Event) {
 const input1 = ref('123456');
 const input2 = ref('enna');
 const input3 = ref('input3');
+const input4 = ref('input4');
 
 watch(input2, (newValue, oldValue) => {
   console.log('input2', { newValue, oldValue });
@@ -154,6 +155,7 @@ watch(pageSize2, (newValue, oldValue) => {
       </template>
       <template #append>xAppend</template>
     </Input>
+    <Input v-model="input4" :style="{ width: '50px' }" prefix="sun" suffix="moon" placeholder="xPlease input4"></Input>
   </div>
 
   <div class="wrapper">

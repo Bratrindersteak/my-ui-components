@@ -26,6 +26,10 @@
   }
 }
 
+.my-pagination-disabled {
+  --my-pagination-color: var(--my-color-disabled);
+}
+
 .my-pagination-item {
   --my-pagination-item-width: var(--my-pagination-height);
   --my-pagination-item-height: var(--my-pagination-height);

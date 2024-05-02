@@ -70,18 +70,30 @@ function handleSelect(key: Key) {
 }
 
 function handleClick() {
+  if (props.disabled) {
+    return;
+  }
   folded.value = !folded.value;
 }
 
 function handleTagClick(key: Key) {
+  if (props.disabled) {
+    return;
+  }
   console.log('<select>', 'handleTagClick', '点击这个标签', key);
 }
 
 function handleTagClose(key: Key) {
+  if (props.disabled) {
+    return;
+  }
   console.log('<select>', 'handleTagClose', '反选这个标签', key);
 }
 
 function handleClear(event: Event) {
+  if (props.disabled) {
+    return;
+  }
   console.log('<select>', 'handleClear', '清空选项');
   emit('update:modelValue', props.multiple ? [] : undefined);
   emit('change', props.multiple ? [] : undefined);
